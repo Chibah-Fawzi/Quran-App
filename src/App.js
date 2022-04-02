@@ -16,7 +16,7 @@ function App() {
       }
     })
     setEditions(res.data.data);
-    setLoading(true)
+    setLoading(false)
   }
 
   useEffect(() => {
