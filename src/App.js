@@ -10,7 +10,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const getEditions = () => {
     setLoading(true)
-    axios.get('http://api.alquran.cloud/v1/edition', {
+    axios.get('https://api.alquran.cloud/v1/edition', {
       headers: {
         "Content-Type": "application/json",
       }

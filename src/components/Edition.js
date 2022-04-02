@@ -13,7 +13,7 @@ export default function Edition() {
   const [loading, setLoading] = useState(false);
   const getEdition = async () => {
     setLoading(true)
-    const res = await axios.get(`http://api.alquran.cloud/v1/quran/${params.editionInv}`)
+    const res = await axios.get(`https://api.alquran.cloud/v1/quran/${params.editionInv}`)
     setSurats(res.data.data.surahs);
     setLoading(false)
   }
