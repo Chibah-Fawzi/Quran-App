@@ -23,7 +23,7 @@ export default function Edition() {
   return (
     <div className="container">
       <h1>Edition :  {params.editionInv}</h1>
-      <div className="row">
+      <div className="row flex-row-reverse">
         {loading ? <p>Loading surats...</p> :
           surats.map(e => {
             return <div className="col-4">

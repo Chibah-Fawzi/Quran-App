@@ -8,12 +8,14 @@ function App() {
 
   const [editions, setEditions] = useState([]);
   const [loading, setLoading] = useState(false);
-  const getEditions = async () => {
+  const getEditions = () => {
     setLoading(true)
-    const res = await axios.get('http://api.alquran.cloud/v1/edition')
-    setEditions(res.data.data);
+    axios.get('http://api.alquran.cloud/v1/edition').then(res => setEditions(res.data.data))
+      .catch(err => console.log(err))
     setLoading(false)
   }
+
+
 
   useEffect(() => {
     getEditions()
