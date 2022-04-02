@@ -10,7 +10,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const getEditions = async () => {
     setLoading(true)
-    const res = await axios.get('http://api.alquran.cloud/v1/edition', {
+    const res = await axios.get('https://api.alquran.cloud/v1/edition', {
       params: {
 
       }

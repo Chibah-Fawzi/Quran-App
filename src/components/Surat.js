@@ -14,12 +14,12 @@ export default function Surat() {
     const [loading, setLoading] = useState(false);
     const getEdition = async () => {
         setLoading(true)
-        const res = await axios.get(`http://api.alquran.cloud/v1/surah/${params.suratNumber}/${params.suratEdition}`)
+        const res = await axios.get(`https://api.alquran.cloud/v1/surah/${params.suratNumber}/${params.suratEdition}`)
         setAyats(res.data.data.ayahs);
         setLoading(false)
     }
     const getSajda = async () => {
-        const res = await axios.get(`http://api.alquran.cloud/v1/sajda/${params.suratEdition}`)
+        const res = await axios.get(`https://api.alquran.cloud/v1/sajda/${params.suratEdition}`)
         setSajdat(res.data.data.ayahs)
         const sajdats = ayats.filter(e => e.surah.number === sajdat.surah.number && e.number === sajdat.number)
         if (sajdats) setIsSajdat(true)
