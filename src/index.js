@@ -2,11 +2,27 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
+
 import reportWebVitals from './reportWebVitals';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+import Edition from './components/Edition'
+import Surat from './components/Surat'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="edition/:editionInv" element={<Edition />} />
+        <Route path="surat/:suratNumber/:suratEdition" element={<Surat />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

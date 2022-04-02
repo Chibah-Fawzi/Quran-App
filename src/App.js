@@ -1,23 +1,48 @@
-import logo from './logo.svg';
+import React from 'react'
 import './App.css';
+import axios from 'axios'
+import { useEffect, useState } from 'react';
+import { Link, Outlet } from "react-router-dom";
 
 function App() {
+
+  const [editions, setEditions] = useState([]);
+  const getEditions = async () => {
+    const res = await axios.get('http://api.alquran.cloud/v1/edition', {
+      params: {
+
+      }
+    })
+    setEditions(res.data.data);
+  }
+
+  useEffect(() => {
+    getEditions()
+  }, []);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container text-center">
+      <h1>Quran app</h1>
+
+      <h2>List of Quran editions</h2>
+      <div className='row'>
+        {editions.map(e => {
+          return (
+            <div className='col-4 mt-5 text-left'>
+              <div>
+                <Link key={e.identifier} to={`/edition/${e.identifier}`}><h3>{e.name}</h3></Link>
+                <Link key={e.identifier} to={`/edition/${e.identifier}`}><h6>{e.englishName}</h6></Link>
+              </div>
+              <ul>
+                <li>Language : {e.language}</li>
+                <li>Direction : {e.direction}</li>
+              </ul>
+            </div>
+          )
+        })}
+      </div>
+      <Outlet />
     </div>
   );
 }
